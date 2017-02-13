@@ -1,0 +1,32 @@
+﻿body {
+}
+
+
+/* the style for the table headers */
+.gridview th
+{
+    font-size: medium;
+    font-weight: bold;
+    color: #008a00;
+    border-style: none;
+    padding: 4px;
+}
+/* the style for the normal table cells */
+.gridview td
+{
+    padding: 4px;
+    border-style: none;
+}
+
+.altrows
+{
+	background-color:#DDF9CA;
+}
+
+.WarningText
+{
+    font-size: medium;
+    font-weight: bold;
+    color: crimson;
+}
+
