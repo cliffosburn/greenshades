@@ -129,20 +129,22 @@
                 </div>
            <div class="row">
                 <div class="col-sm-1" >
-                    <div class="btn btn-default btn-md glyphicon glyphicon-menu-left">
-                        <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" BackColor="Transparent" BorderWidth="0" CausesValidation="false" />
-                    </div>
-                    
+                    <asp:LinkButton ID="lnkBtnBack" runat="server" CssClass="btn btn-default btn-md" OnClick="lnkBtnBack_Click" CausesValidation="false">
+                        <span aria-hidden="true" class="glyphicon glyphicon-menu-left"></span>Back
+                    </asp:LinkButton>
                 </div>
                 <div class="col-sm-1" >
-                    <div class="btn btn-default btn-md glyphicon glyphicon-pencil">
-                        <asp:Button ID="btnEditEmployee" runat="server" Text="Edit Employee" OnClick="btnEditEmployee_Click" BackColor="Transparent" BorderWidth="0"  />
-                    </div>
+                    <asp:LinkButton ID="lnkBtnEditEmployee" runat="server" CssClass="btn btn-default btn-md" OnClick="lnkBtnEditEmployee_Click">
+                        <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>Edit Employee
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="lnkBtnAddEmployee" runat="server" CssClass="btn btn-default btn-md" OnClick="lnkBtnAddEmployee_Click">
+                        <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>Add Employee
+                    </asp:LinkButton>
                 </div>
                 <div class="col-sm-1" >
-                    <div class="btn btn-default btn-md glyphicon glyphicon-remove">
-                        <asp:Button ID="btnDeleteEmployee" runat="server" Text="Delete Employee" OnClick="btnDeleteEmployee_Click" BackColor="Transparent" BorderWidth="0"  CausesValidation="false"/>
-                    </div>
+                    <asp:LinkButton ID="lnkBtnDeleteEmployee" runat="server" CssClass="btn btn-default btn-md" OnClick="lnkBtnDeleteEmployee_Click" CausesValidation="false">
+                        <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>Delete Employee
+                    </asp:LinkButton>
                 </div>
             </div>  
 

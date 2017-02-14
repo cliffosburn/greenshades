@@ -25,19 +25,26 @@ namespace Greenshades
                 //Employee ID provided
                 intEmployee_ID = Convert.ToInt32(Request.QueryString["id"]);
 
+                this.lnkBtnAddEmployee.Visible = false;
+
                 if (!IsPostBack)
                 {
                     GetStates();
-                    DisplayEmployeeDetails();
+                    DisplayEmployeeDetails(intEmployee_ID);
                 }
                 
             }
             else
             {
                 // No ID provided, new entry
-                GetStates();
-                this.btnEditEmployee.Visible = false;
-                this.btnDeleteEmployee.Visible = false;
+                if (!IsPostBack)
+                {
+                    GetStates();
+                }
+                this.lnkBtnEditEmployee.Visible = false;
+                this.lnkBtnDeleteEmployee.Visible = false;
+                this.lnkBtnAddEmployee.Visible = true;
+
             }
 
         }
@@ -88,7 +95,7 @@ namespace Greenshades
 
 
 
-        public void DisplayEmployeeDetails()
+        public void DisplayEmployeeDetails(int EmployeeID)
         {
             
 
@@ -96,7 +103,7 @@ namespace Greenshades
 
             try
             {
-                myEmployee = EmployeeDB.GetEmployeeDetails(intEmployee_ID);
+                myEmployee = EmployeeDB.GetEmployeeDetails(EmployeeID);
             }
             catch (SQLiteException ex)
             {
@@ -122,7 +129,13 @@ namespace Greenshades
         }
 
 
-        protected void btnEditEmployee_Click(object sender, EventArgs e)
+
+        protected void lnkBtnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void lnkBtnEditEmployee_Click(object sender, EventArgs e)
         {
             myEmployee = EmployeeDB.GetEmployeeDetails(intEmployee_ID);
 
@@ -136,22 +149,40 @@ namespace Greenshades
             myEmployee.Employee_AddressLine = txtEmployeeAddress_Line.Text.ToString();
             myEmployee.Employee_AddressLine2 = txtEmployeeAddress_Line2.Text.ToString();
             myEmployee.Employee_AddressCity = txtEmployeeAddress_City.Text.ToString();
-            myEmployee.Employee_Address_StateID = Convert.ToInt32(ddlState.SelectedValue.ToString()); 
+            myEmployee.Employee_Address_StateID = Convert.ToInt32(ddlState.SelectedValue.ToString());
             myEmployee.Employee_AddressZip = txtEmployeeAddress_Zip.Text.ToString();
 
             EmployeeDB.UpdateEmployeeDetails(myEmployee);
-            DisplayEmployeeDetails();
+            DisplayEmployeeDetails(myEmployee.ID);
         }
 
-        protected void btnDeleteEmployee_Click(object sender, EventArgs e)
+        protected void lnkBtnDeleteEmployee_Click(object sender, EventArgs e)
         {
+            myEmployee = EmployeeDB.GetEmployeeDetails(intEmployee_ID);
             EmployeeDB.DeleteEmployee(myEmployee.ID);
             Response.Redirect("Default.aspx");
         }
 
-        protected void btnBack_Click(object sender, EventArgs e)
+        protected void lnkBtnAddEmployee_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            myEmployee.FirstName = txtEmployee_FName.Text.ToString();
+            myEmployee.LastName = txtEmployee_LName.Text.ToString();
+            myEmployee.JobTitle = txtEmployee_JobTitle.Text.ToString();
+            myEmployee.ContactEmail = txtEmployeeContact_Email.Text.ToString();
+            myEmployee.ContactHomePhone = txtEmployeeContact_HomePhone.Text.ToString();
+            myEmployee.ContactCellPhone = txtEmployeeContact_CellPhone.Text.ToString();
+            myEmployee.ContactFax = txtEmployeeContact_Fax.Text.ToString();
+            myEmployee.Employee_AddressLine = txtEmployeeAddress_Line.Text.ToString();
+            myEmployee.Employee_AddressLine2 = txtEmployeeAddress_Line2.Text.ToString();
+            myEmployee.Employee_AddressCity = txtEmployeeAddress_City.Text.ToString();
+            myEmployee.Employee_Address_StateID = Convert.ToInt32(ddlState.SelectedValue.ToString());
+            myEmployee.Employee_AddressZip = txtEmployeeAddress_Zip.Text.ToString();
+
+            myEmployee = EmployeeDB.InsertEmployeeDetails(myEmployee);
+            DisplayEmployeeDetails(myEmployee.ID);
+
+
+
         }
     }
 }

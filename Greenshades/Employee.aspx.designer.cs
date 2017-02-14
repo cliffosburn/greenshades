@@ -166,30 +166,39 @@ namespace Greenshades {
         protected global::System.Web.UI.WebControls.TextBox txtEmployeeAddress_Zip;
         
         /// <summary>
-        /// btnBack control.
+        /// lnkBtnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnBack;
         
         /// <summary>
-        /// btnEditEmployee control.
+        /// lnkBtnEditEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditEmployee;
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnEditEmployee;
         
         /// <summary>
-        /// btnDeleteEmployee control.
+        /// lnkBtnAddEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteEmployee;
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnAddEmployee;
+        
+        /// <summary>
+        /// lnkBtnDeleteEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnDeleteEmployee;
     }
 }

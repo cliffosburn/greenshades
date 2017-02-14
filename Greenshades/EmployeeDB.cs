@@ -265,5 +265,120 @@ namespace Greenshades
             return result;
         }
 
+
+        public static EmployeeDetails InsertEmployeeDetails(EmployeeDetails myEmployee)
+        {
+            long id = -1;
+
+            using (SQLiteConnection conn = new SQLiteConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnStr-Employee1"].ConnectionString))
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(conn))
+                {
+                    cmd.CommandText = "INSERT INTO Employee "
+                    + "(Employee_FName, Employee_LName, Employee_JobTitle) "
+                    + "VALUES (@FN, @LN, @JT); "
+                    + "SELECT last_insert_rowid()";
+                    cmd.Prepare();
+                    cmd.Parameters.AddWithValue("@FN", myEmployee.FirstName);
+                    cmd.Parameters.AddWithValue("@LN", myEmployee.LastName);
+                    cmd.Parameters.AddWithValue("@JT", myEmployee.JobTitle);
+                    try
+                    {
+                        //result = cmd.ExecuteNonQuery();
+                        object obj = cmd.ExecuteScalar();
+                        id = (long)obj;
+                        myEmployee.ID = Convert.ToInt32(id);
+                    }
+                    catch (SQLiteException ex)
+                    {
+
+                    }
+                }
+                conn.Close();
+
+                if (id > 0)
+                {
+                    myEmployee.Employee_AddressID = InsertEmployeeAddress(myEmployee);
+                    myEmployee.ContactID = InsertEmployeeContact(myEmployee);
+
+                }
+            }
+            return myEmployee;
+        }
+
+        public static int InsertEmployeeContact(EmployeeDetails myEmployee)
+        {
+            long id = -1;
+
+            using (SQLiteConnection conn = new SQLiteConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnStr-Employee1"].ConnectionString))
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(conn))
+                {
+                    cmd.CommandText = "INSERT INTO EmployeeContact "
+                    + "(EmployeeContact_Employee_ID, EmployeeContact_Email, EmployeeContact_HomePhone, EmployeeContact_CellPhone, EmployeeContact_Fax) "
+                    + "VALUES (@EI, @E, @HP, @CP, @F); "
+                    + "SELECT last_insert_rowid()";
+                    cmd.Prepare();
+                    cmd.Parameters.AddWithValue("@EI", myEmployee.ID);
+                    cmd.Parameters.AddWithValue("@E", myEmployee.ContactEmail);
+                    cmd.Parameters.AddWithValue("@HP", myEmployee.ContactHomePhone);
+                    cmd.Parameters.AddWithValue("@CP", myEmployee.ContactCellPhone);
+                    cmd.Parameters.AddWithValue("@F", myEmployee.ContactFax);
+                    try
+                    {
+                        object obj = cmd.ExecuteScalar();
+                        id = (long)obj;
+                        myEmployee.ContactID = Convert.ToInt32(id);
+                    }
+                    catch (SQLiteException ex)
+                    {
+
+                    }
+                }
+                conn.Close();
+
+            }
+            return myEmployee.ContactID;
+        }
+
+        public static int InsertEmployeeAddress(EmployeeDetails myEmployee)
+        {
+            long id = -1;
+
+            using (SQLiteConnection conn = new SQLiteConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnStr-Employee1"].ConnectionString))
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(conn))
+                {
+                    cmd.CommandText = "INSERT INTO EmployeeAddress "
+                    + "(EmployeeAddress_Employee_ID, EmployeeAddress_Line, EmployeeAddress_Line2, EmployeeAddress_City, EmployeeAddress_State_ID, EmployeeAddress_Zip) "
+                    + "VALUES (@EI, @L1, @L2, @C, @S, @Z); "
+                    + "SELECT last_insert_rowid()";
+                    cmd.Prepare();
+                    cmd.Parameters.AddWithValue("@EI", myEmployee.ID);
+                    cmd.Parameters.AddWithValue("@L1", myEmployee.Employee_AddressLine);
+                    cmd.Parameters.AddWithValue("@L2", myEmployee.Employee_AddressLine2);
+                    cmd.Parameters.AddWithValue("@C", myEmployee.Employee_AddressCity);
+                    cmd.Parameters.AddWithValue("@S", myEmployee.Employee_Address_StateID);
+                    cmd.Parameters.AddWithValue("@Z", myEmployee.Employee_AddressZip);
+                    try
+                    {
+                        object obj = cmd.ExecuteScalar();
+                        id = (long)obj;
+                        myEmployee.Employee_AddressID = Convert.ToInt32(id);
+                    }
+                    catch (SQLiteException ex)
+                    {
+
+                    }
+                }
+                conn.Close();
+
+            }
+            return myEmployee.Employee_AddressID;
+        }
+
     }
 }
