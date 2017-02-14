@@ -25,7 +25,16 @@ namespace Greenshades
                 //Employee ID provided
                 intEmployee_ID = Convert.ToInt32(Request.QueryString["id"]);
 
-                lblStatus.Text = "";
+                if (Request.QueryString["new"] == "true")
+                {
+                    lblStatus.Text = "Employee Information Added";
+                }
+                else
+                {
+                    lblStatus.Text = "";
+                }
+
+                
 
                 this.lnkBtnAddEmployee.Visible = false;
 
@@ -42,10 +51,18 @@ namespace Greenshades
                 if (!IsPostBack)
                 {
                     GetStates();
+                    this.lnkBtnAddEmployee.Visible = true;
+                    this.lnkBtnEditEmployee.Visible = false;
+                    this.lnkBtnDeleteEmployee.Visible = false;
                 }
-                this.lnkBtnEditEmployee.Visible = false;
-                this.lnkBtnDeleteEmployee.Visible = false;
-                this.lnkBtnAddEmployee.Visible = true;
+                else
+                {
+                    this.lnkBtnAddEmployee.Visible = false;
+                    this.lnkBtnEditEmployee.Visible = true;
+                    this.lnkBtnDeleteEmployee.Visible = true;
+                }
+
+
 
             }
 
@@ -182,10 +199,9 @@ namespace Greenshades
             myEmployee.Employee_AddressZip = txtEmployeeAddress_Zip.Text.ToString();
 
             myEmployee = EmployeeDB.InsertEmployeeDetails(myEmployee);
-            DisplayEmployeeDetails(myEmployee.ID);
-            lblStatus.Text = "Employee Information Added";
-
-
+            //DisplayEmployeeDetails(myEmployee.ID);
+            //lblStatus.Text = "Employee Information Added";
+            Response.Redirect("Employee.aspx?new=true&id=" + myEmployee.ID.ToString());
 
         }
     }

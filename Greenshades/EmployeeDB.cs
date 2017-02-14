@@ -23,9 +23,9 @@ namespace Greenshades
                         + "Employeecontact.EmployeeContact_ID, Employeecontact.EmployeeContact_Email, Employeecontact.EmployeeContact_HomePhone, Employeecontact.EmployeeContact_CellPhone, Employeecontact.EmployeeContact_Fax, "
                         + "EmployeeAddress.EmployeeAddress_ID, EmployeeAddress.EmployeeAddress_Employee_ID, EmployeeAddress.EmployeeAddress_Line, EmployeeAddress.EmployeeAddress_Line2, EmployeeAddress.EmployeeAddress_City, EmployeeAddress.EmployeeAddress_State_ID, EmployeeAddress.EmployeeAddress_Zip "
                         + "from Employee "
-                        + "INNER JOIN EmployeeContact on Employee.Employee_ID = EmployeeContact.EmployeeContact_Employee_ID "
-                        + "INNER JOIN EmployeeAddress on Employee.Employee_ID = EmployeeAddress.EmployeeAddress_Employee_ID "
-                        + "INNER JOIN State on EmployeeAddress.EmployeeAddress_State_ID = state.State_ID "
+                        + "LEFT JOIN EmployeeContact on Employee.Employee_ID = EmployeeContact.EmployeeContact_Employee_ID "
+                        + "LEFT JOIN EmployeeAddress on Employee.Employee_ID = EmployeeAddress.EmployeeAddress_Employee_ID "
+                        + "LEFT JOIN State on EmployeeAddress.EmployeeAddress_State_ID = state.State_ID "
                         + "Where Employee.Employee_ID = " + Employee_ID;
 
                     using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))

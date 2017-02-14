@@ -96,6 +96,7 @@
                 <div class="col-md-4" >
                     <label for="txtEmployeeAddress_Line">Address Line 1</label>
                     <asp:TextBox ID="txtEmployeeAddress_Line" runat="server"  class="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ErrorMessage="Required information" ControlToValidate="txtEmployeeAddress_Line" runat="server" Text="Required information" Font-Bold="true" ForeColor="Crimson" Display="Dynamic" />
                 </div>
             </div>
             <div class="row">
@@ -108,6 +109,7 @@
                 <div class="col-md-4" >
                     <label for="txtEmployeeAddress_City">City</label>
                     <asp:TextBox ID="txtEmployeeAddress_City" runat="server"  class="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ErrorMessage="Required information" ControlToValidate="txtEmployeeAddress_City" runat="server" Text="Required information" Font-Bold="true" ForeColor="Crimson" Display="Dynamic" />
                 </div>
             </div>
             <div class="row">
@@ -115,12 +117,14 @@
                     <label for="ddlState">State</label>
                     <asp:DropDownList ID = "ddlState" runat="server" class="form-control">
                     </asp:DropDownList>
+                    <asp:CompareValidator ControlToValidate="ddlState" ID="CompareValidator1" Font-Bold="true" ForeColor="Crimson" ErrorMessage="Please select a State" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="0" Type="Integer" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4" >
                     <label for="txtEmployeeAddress_Zip">Zip</label>
                     <asp:TextBox ID="txtEmployeeAddress_Zip" runat="server"  class="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ErrorMessage="Required information" ControlToValidate="txtEmployeeAddress_Zip" runat="server" Text="Required information" Font-Bold="true" ForeColor="Crimson" Display="Dynamic" />
                 </div>
             </div>
             <div class="row">
