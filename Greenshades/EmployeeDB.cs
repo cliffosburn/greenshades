@@ -148,7 +148,7 @@ namespace Greenshades
                         + "WHERE EmployeeAddress_ID = @ID AND EmployeeAddress_Employee_ID = @AID";
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@ID", myEmployee.ID);
-                    cmd.Parameters.AddWithValue("@AID", myEmployee.ContactID);
+                    cmd.Parameters.AddWithValue("@AID", myEmployee.Employee_AddressID);
                     cmd.Parameters.AddWithValue("@L1", myEmployee.Employee_AddressLine);
                     cmd.Parameters.AddWithValue("@L2", myEmployee.Employee_AddressLine2);
                     cmd.Parameters.AddWithValue("@C", myEmployee.Employee_AddressCity);

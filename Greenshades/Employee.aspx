@@ -123,10 +123,12 @@
                     <asp:TextBox ID="txtEmployeeAddress_Zip" runat="server"  class="form-control"></asp:TextBox>
                 </div>
             </div>
-              <div class="row">
-                <div class="col-md-12" style="background-color:darkseagreen;">
-                   
+            <div class="row">
+                <div class="col-md-12" style="background-color:darkseagreen; height:25px;">
+                   <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="White" Font-Bold="true"></asp:Label>
                 </div>
+            </div>
+            
            <div class="row">
                 <div class="col-sm-1" >
                     <asp:LinkButton ID="lnkBtnBack" runat="server" CssClass="btn btn-default btn-md" OnClick="lnkBtnBack_Click" CausesValidation="false">

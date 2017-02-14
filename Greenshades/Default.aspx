@@ -26,7 +26,7 @@
                 </div>
             </div>
              <div class="row">
-                <div class="col-md-12" style="background-color:darkseagreen;">
+                <div class="col-md-12" style="background-color:darkseagreen; height: 5px;">
                    
                 </div>
              </div>

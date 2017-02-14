@@ -25,6 +25,8 @@ namespace Greenshades
                 //Employee ID provided
                 intEmployee_ID = Convert.ToInt32(Request.QueryString["id"]);
 
+                lblStatus.Text = "";
+
                 this.lnkBtnAddEmployee.Visible = false;
 
                 if (!IsPostBack)
@@ -154,6 +156,7 @@ namespace Greenshades
 
             EmployeeDB.UpdateEmployeeDetails(myEmployee);
             DisplayEmployeeDetails(myEmployee.ID);
+            lblStatus.Text = "Employee Information Updated";
         }
 
         protected void lnkBtnDeleteEmployee_Click(object sender, EventArgs e)
@@ -180,6 +183,7 @@ namespace Greenshades
 
             myEmployee = EmployeeDB.InsertEmployeeDetails(myEmployee);
             DisplayEmployeeDetails(myEmployee.ID);
+            lblStatus.Text = "Employee Information Added";
 
 
 
