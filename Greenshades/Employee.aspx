@@ -92,22 +92,57 @@
                     <asp:TextBox ID="txtEmployeeContact_Fax" runat="server"  class="form-control"></asp:TextBox>
                 </div>
             </div>
- 
+            <div class="row">
+                <div class="col-md-4" >
+                    <label for="txtEmployeeAddress_Line">Address Line 1</label>
+                    <asp:TextBox ID="txtEmployeeAddress_Line" runat="server"  class="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" >
+                    <label for="txtEmployeeAddress_Line2">Address Line 2</label>
+                    <asp:TextBox ID="txtEmployeeAddress_Line2" runat="server"  class="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" >
+                    <label for="txtEmployeeAddress_City">City</label>
+                    <asp:TextBox ID="txtEmployeeAddress_City" runat="server"  class="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" >
+                    <label for="ddlState">State</label>
+                    <asp:DropDownList ID = "ddlState" runat="server" class="form-control">
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" >
+                    <label for="txtEmployeeAddress_Zip">Zip</label>
+                    <asp:TextBox ID="txtEmployeeAddress_Zip" runat="server"  class="form-control"></asp:TextBox>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col-md-12" style="background-color:darkseagreen;">
+                   
+                </div>
            <div class="row">
                 <div class="col-sm-1" >
-                    <button type="button" class="btn btn-default btn-md" id="btnBack" runat="server" onserverclick="btnBack_serverClick"> 
-                       <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back 
-                    </button>
+                    <div class="btn btn-default btn-md glyphicon glyphicon-menu-left">
+                        <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" BackColor="Transparent" BorderWidth="0" CausesValidation="false" />
+                    </div>
+                    
                 </div>
                 <div class="col-sm-1" >
-                    <button type="button" class="btn btn-default btn-md" id="btnEditEmployee" runat="server" onserverclick="btnEditEmployee_serverClick"> 
-                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Employee 
-                    </button>
+                    <div class="btn btn-default btn-md glyphicon glyphicon-pencil">
+                        <asp:Button ID="btnEditEmployee" runat="server" Text="Edit Employee" OnClick="btnEditEmployee_Click" BackColor="Transparent" BorderWidth="0"  />
+                    </div>
                 </div>
                 <div class="col-sm-1" >
-                    <button type="button" class="btn btn-default btn-md" id="btnDeleteEmployee" runat="server" onserverclick="btnDeleteEmployee_serverClick"> 
-                       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete Employee 
-                    </button>
+                    <div class="btn btn-default btn-md glyphicon glyphicon-remove">
+                        <asp:Button ID="btnDeleteEmployee" runat="server" Text="Delete Employee" OnClick="btnDeleteEmployee_Click" BackColor="Transparent" BorderWidth="0"  CausesValidation="false"/>
+                    </div>
                 </div>
             </div>  
 

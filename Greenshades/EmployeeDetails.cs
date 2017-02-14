@@ -17,9 +17,16 @@ namespace Greenshades
         private string _ContactHomePhone = "";
         private string _ContactCellPhone = "";
         private string _ContactFax = "";
+        private int _AddressID = 0;
+        private string _AddressLine = "";
+        private string _AddressLine2 = "";
+        private string _AddressCity = "";
+        private int _AddressStateID = 0;
+        private string _AddressZip = "";
 
 
-        public EmployeeDetails(int Employee_ID, string FName, string LName, string Employee_JobTitle, int Employee_ContactID, string Employee_ContactEmail, string Employee_ContactHomePhone, string Employee_ContactCellPhone, string Employee_ContactFax)
+
+        public EmployeeDetails(int Employee_ID, string FName, string LName, string Employee_JobTitle, int Employee_ContactID, string Employee_ContactEmail, string Employee_ContactHomePhone, string Employee_ContactCellPhone, string Employee_ContactFax, int Employee_AddressID, string Employee_AddressLine, string Employee_AddressLine2, string Employee_AddressCity, int Employee_Address_StateID, string Employee_AddressZip)
         {
             this._ID = Employee_ID;
             this._FirstName = FName;
@@ -30,6 +37,12 @@ namespace Greenshades
             this._ContactHomePhone = Employee_ContactHomePhone;
             this._ContactCellPhone = Employee_ContactCellPhone;
             this._ContactFax = Employee_ContactFax;
+            this._AddressID = Employee_AddressID;
+            this._AddressLine = Employee_AddressLine;
+            this._AddressLine2 = Employee_AddressLine2;
+            this._AddressCity = Employee_AddressCity;
+            this._AddressStateID = Employee_Address_StateID;
+            this._AddressZip = Employee_AddressZip;
         }
 
         public EmployeeDetails()
@@ -94,6 +107,42 @@ namespace Greenshades
         {
             get { return _ContactFax; }
             set { _ContactFax = value; }
+        }
+
+        public int Employee_AddressID
+        {
+            get { return _AddressID; }
+            set { _AddressID = value; }
+        }
+
+        public string Employee_AddressLine
+        {
+            get { return _AddressLine; }
+            set { _AddressLine = value; }
+        }
+
+        public string Employee_AddressLine2
+        {
+            get { return _AddressLine2; }
+            set { _AddressLine2 = value; }
+        }
+
+        public string Employee_AddressCity
+        {
+            get { return _AddressCity; }
+            set { _AddressCity = value; }
+        }
+
+        public int Employee_Address_StateID
+        {
+            get { return _AddressStateID; }
+            set { _AddressStateID = value; }
+        }
+
+        public string Employee_AddressZip
+        {
+            get { return _AddressZip; }
+            set { _AddressZip = value; }
         }
 
     }

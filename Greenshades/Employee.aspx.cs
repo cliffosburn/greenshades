@@ -12,60 +12,144 @@ namespace Greenshades
 {
     public partial class Employee : System.Web.UI.Page
     {
+
+        EmployeeDetails myEmployee = new EmployeeDetails();
+        public int intEmployee_ID;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //Employee ID provided
+
             if (Request.QueryString["id"] != null)
             {
-                int intEmployee_ID = Convert.ToInt32(Request.QueryString["id"]);
-                EmployeeDetails myEmployee = new EmployeeDetails();
+                //Employee ID provided
+                intEmployee_ID = Convert.ToInt32(Request.QueryString["id"]);
 
+                if (!IsPostBack)
+                {
+                    GetStates();
+                    DisplayEmployeeDetails();
+                }
                 
-
-                //EmployeeDetails myEmployee = new EmployeeDetails(intEmployee_ID, "John", "JOnes", "Janitor", 1, "jjones@gmail.com", "8001234567", "8009876543", "8007771111");
-
-                try
-                {
-                     myEmployee = EmployeeDB.GetEmployeeDetails(intEmployee_ID);
-                }
-                catch (SQLiteException ex)
-                {
-
-                    Response.Write("<script>alert('Exception: " + ex.Message + "')</script>");
-                }
-           
-                lblEmployee_ID.Text = myEmployee.ID.ToString();
-                txtEmployee_FName.Text = myEmployee.FirstName.ToString();
-                txtEmployee_LName.Text = myEmployee.LastName.ToString();
-                txtEmployee_JobTitle.Text = myEmployee.JobTitle.ToString();
-                txtEmployeeContact_Email.Text = myEmployee.ContactEmail.ToString();
-                txtEmployeeContact_HomePhone.Text = myEmployee.ContactHomePhone.ToString();
-                txtEmployeeContact_CellPhone.Text = myEmployee.ContactCellPhone.ToString();
-                txtEmployeeContact_Fax.Text = myEmployee.ContactFax.ToString();
-
             }
             else
             {
                 // No ID provided, new entry
+                GetStates();
                 this.btnEditEmployee.Visible = false;
-                this.btnDeleteEmployee.Visible = false;                
+                this.btnDeleteEmployee.Visible = false;
             }
 
+        }
+
+
+
+        public void GetStates()
+        {
+
+
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnStr-Employee1"].ConnectionString))
+
+                {
+                    conn.Open();
+                    string sql = "select State_ID, State_Name, State_Abbr From State";
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                    {
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            ddlState.Items.Clear();
+                            ddlState.DataTextField = "State_Name";
+                            ddlState.DataValueField = "State_ID";
+
+                            while (reader.Read())
+                            {
+                                ListItem newItem = new ListItem();
+                                newItem.Text = reader["State_Name"].ToString();
+                                newItem.Value = reader["State_ID"].ToString();
+                                ddlState.Items.Add(newItem);
+
+                            }
+
+                            ddlState.Items.Insert(0, new ListItem("<Select State>", "0"));
+
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (SQLiteException ex)
+            {
+
+            }
+        }
+
+
+
+
+        public void DisplayEmployeeDetails()
+        {
+            
+
+            //EmployeeDetails myEmployee = new EmployeeDetails(intEmployee_ID, "John", "JOnes", "Janitor", 1, "jjones@gmail.com", "8001234567", "8009876543", "8007771111");
+
+            try
+            {
+                myEmployee = EmployeeDB.GetEmployeeDetails(intEmployee_ID);
+            }
+            catch (SQLiteException ex)
+            {
+
+                Response.Write("<script>alert('Exception: " + ex.Message + "')</script>");
+            }
+
+            lblEmployee_ID.Text = myEmployee.ID.ToString();
+            txtEmployee_FName.Text = myEmployee.FirstName.ToString();
+            txtEmployee_LName.Text = myEmployee.LastName.ToString();
+            txtEmployee_JobTitle.Text = myEmployee.JobTitle.ToString();
+            txtEmployeeContact_Email.Text = myEmployee.ContactEmail.ToString();
+            txtEmployeeContact_HomePhone.Text = myEmployee.ContactHomePhone.ToString();
+            txtEmployeeContact_CellPhone.Text = myEmployee.ContactCellPhone.ToString();
+            txtEmployeeContact_Fax.Text = myEmployee.ContactFax.ToString();
+            txtEmployeeAddress_Line.Text = myEmployee.Employee_AddressLine.ToString();
+            txtEmployeeAddress_Line2.Text = myEmployee.Employee_AddressLine2.ToString();
+            txtEmployeeAddress_City.Text = myEmployee.Employee_AddressCity.ToString();
+            txtEmployeeAddress_Zip.Text = myEmployee.Employee_AddressZip.ToString();
+
+            ddlState.SelectedValue = myEmployee.Employee_Address_StateID.ToString();
 
         }
 
-        protected void btnEditEmployee_serverClick(object sender, EventArgs e)
+
+        protected void btnEditEmployee_Click(object sender, EventArgs e)
         {
+            myEmployee = EmployeeDB.GetEmployeeDetails(intEmployee_ID);
+
+            myEmployee.FirstName = txtEmployee_FName.Text.ToString();
+            myEmployee.LastName = txtEmployee_LName.Text.ToString();
+            myEmployee.JobTitle = txtEmployee_JobTitle.Text.ToString();
+            myEmployee.ContactEmail = txtEmployeeContact_Email.Text.ToString();
+            myEmployee.ContactHomePhone = txtEmployeeContact_HomePhone.Text.ToString();
+            myEmployee.ContactCellPhone = txtEmployeeContact_CellPhone.Text.ToString();
+            myEmployee.ContactFax = txtEmployeeContact_Fax.Text.ToString();
+            myEmployee.Employee_AddressLine = txtEmployeeAddress_Line.Text.ToString();
+            myEmployee.Employee_AddressLine2 = txtEmployeeAddress_Line2.Text.ToString();
+            myEmployee.Employee_AddressCity = txtEmployeeAddress_City.Text.ToString();
+            myEmployee.Employee_Address_StateID = Convert.ToInt32(ddlState.SelectedValue.ToString()); 
+            myEmployee.Employee_AddressZip = txtEmployeeAddress_Zip.Text.ToString();
+
+            EmployeeDB.UpdateEmployeeDetails(myEmployee);
+            DisplayEmployeeDetails();
+        }
+
+        protected void btnDeleteEmployee_Click(object sender, EventArgs e)
+        {
+            EmployeeDB.DeleteEmployee(myEmployee.ID);
             Response.Redirect("Default.aspx");
         }
 
-        protected void btnBack_serverClick(object sender, EventArgs e)
-        {
-            Response.Redirect("Default.aspx");
-        }
-
-        protected void btnDeleteEmployee_serverClick(object sender, EventArgs e)
+        protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
         }

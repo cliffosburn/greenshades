@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="App_Data\Employee1.db" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,7 +111,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="App_Data\Employee1.db" />
     <None Include="Properties\PublishProfiles\Greenshadesweb.pubxml" />
     <Content Include="images\greenshades-logo.png" />
     <Content Include="Scripts\bootstrap.js" />

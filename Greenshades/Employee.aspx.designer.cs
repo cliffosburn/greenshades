@@ -121,13 +121,58 @@ namespace Greenshades {
         protected global::System.Web.UI.WebControls.TextBox txtEmployeeContact_Fax;
         
         /// <summary>
+        /// txtEmployeeAddress_Line control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeAddress_Line;
+        
+        /// <summary>
+        /// txtEmployeeAddress_Line2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeAddress_Line2;
+        
+        /// <summary>
+        /// txtEmployeeAddress_City control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeAddress_City;
+        
+        /// <summary>
+        /// ddlState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlState;
+        
+        /// <summary>
+        /// txtEmployeeAddress_Zip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeAddress_Zip;
+        
+        /// <summary>
         /// btnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnBack;
+        protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
         /// btnEditEmployee control.
@@ -136,7 +181,7 @@ namespace Greenshades {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnEditEmployee;
+        protected global::System.Web.UI.WebControls.Button btnEditEmployee;
         
         /// <summary>
         /// btnDeleteEmployee control.
@@ -145,6 +190,6 @@ namespace Greenshades {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnDeleteEmployee;
+        protected global::System.Web.UI.WebControls.Button btnDeleteEmployee;
     }
 }
