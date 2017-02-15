@@ -8,7 +8,8 @@
    <meta charset="utf-8"/>
    <meta name="viewport" content="width=device-width, initial-scale=1"/>
    <link rel="stylesheet" href="Content/bootstrap.min.css"/>
-   <script src="Content/bootstrap.min.js"></script>
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+   <script src="Scripts/bootstrap.min.js"></script>
    <link rel="stylesheet" href="Content/bootstrap-theme.min.css"/>
     <link href="StyleSheet1.css" rel="stylesheet" />
 </head>
