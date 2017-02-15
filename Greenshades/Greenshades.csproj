@@ -143,6 +143,7 @@
     <Compile Include="EmployeeDB.cs" />
     <Compile Include="EmployeeDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidateInput.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

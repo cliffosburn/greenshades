@@ -171,9 +171,17 @@ namespace Greenshades
             myEmployee.Employee_Address_StateID = Convert.ToInt32(ddlState.SelectedValue.ToString());
             myEmployee.Employee_AddressZip = txtEmployeeAddress_Zip.Text.ToString();
 
-            EmployeeDB.UpdateEmployeeDetails(myEmployee);
-            DisplayEmployeeDetails(myEmployee.ID);
-            lblStatus.Text = "Employee Information Updated";
+            bool NewEntry = false;
+            if (ValidateInput.ValidateEmployeeDetails(myEmployee, NewEntry))
+            {
+                EmployeeDB.UpdateEmployeeDetails(myEmployee);
+                DisplayEmployeeDetails(myEmployee.ID);
+                lblStatus.Text = "Employee Information Updated";
+            }
+            else
+            {
+                lblStatus.Text = "Invalid input, please check entries.";
+            }
         }
 
         protected void lnkBtnDeleteEmployee_Click(object sender, EventArgs e)
@@ -198,10 +206,18 @@ namespace Greenshades
             myEmployee.Employee_Address_StateID = Convert.ToInt32(ddlState.SelectedValue.ToString());
             myEmployee.Employee_AddressZip = txtEmployeeAddress_Zip.Text.ToString();
 
-            myEmployee = EmployeeDB.InsertEmployeeDetails(myEmployee);
-            //DisplayEmployeeDetails(myEmployee.ID);
-            //lblStatus.Text = "Employee Information Added";
-            Response.Redirect("Employee.aspx?new=true&id=" + myEmployee.ID.ToString());
+            bool NewEntry = true;
+            if (ValidateInput.ValidateEmployeeDetails(myEmployee, NewEntry))
+            {
+                myEmployee = EmployeeDB.InsertEmployeeDetails(myEmployee);
+                //DisplayEmployeeDetails(myEmployee.ID);
+                //lblStatus.Text = "Employee Information Added";
+                Response.Redirect("Employee.aspx?new=true&id=" + myEmployee.ID.ToString());
+            }
+            else
+            {
+                lblStatus.Text = "Invalid input, please check entries.";
+            }
 
         }
     }
