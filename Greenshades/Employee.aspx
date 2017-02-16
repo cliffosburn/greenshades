@@ -8,11 +8,11 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="Content/bootstrap.min.css"/>
-    <script src="Content/bootstrap.min.js"></script>
     <link rel="stylesheet" href="Content/bootstrap-theme.min.css"/>
     <link href="StyleSheet1.css" rel="stylesheet" />
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://digitalbush.com/wp-content/uploads/2013/01/jquery.maskedinput-1.3.1.min_.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
       <script type='text/javascript'>
     $( document ).ready(function() {
         $('#txtEmployeeContact_HomePhone').mask('(999) 999-9999');
@@ -128,6 +128,11 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-4" >
+                    <label>TODO: Implement employee contacts list (sometimes referred to as emergency contacts or dependents)</label>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12" style="background-color:darkseagreen; height:25px;">
                    <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="White" Font-Bold="true"></asp:Label>
                 </div>
@@ -141,7 +146,7 @@
                 </div>
                 <div class="col-sm-1" >
                     <asp:LinkButton ID="lnkBtnEditEmployee" runat="server" CssClass="btn btn-default btn-md" OnClick="lnkBtnEditEmployee_Click">
-                        <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>Edit Employee
+                        <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>Save Changes
                     </asp:LinkButton>
                     <asp:LinkButton ID="lnkBtnAddEmployee" runat="server" CssClass="btn btn-default btn-md" OnClick="lnkBtnAddEmployee_Click">
                         <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>Add Employee
