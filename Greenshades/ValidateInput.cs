@@ -10,7 +10,7 @@ namespace Greenshades
 {
     public class ValidateInput
     {
-
+        //For the purpose of validating input in the event Javascript is no enabled on the client browser
         public static Boolean ValidateEmployeeDetails(EmployeeDetails myEmployee, bool NewEntry)
         {
 

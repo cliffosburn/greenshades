@@ -8,7 +8,7 @@ namespace Greenshades
 {
     public class EmployeeDB
     {
-        
+        //Query database for Employee info and populate properties of EmployeeDetails class
         public static EmployeeDetails GetEmployeeDetails(int Employee_ID)
         {
             EmployeeDetails myEmployee = new EmployeeDetails();
@@ -34,7 +34,7 @@ namespace Greenshades
                         {
                             while (reader.Read())
                             {
-                                //EmployeeDetails myEmployee = new EmployeeDetails();
+
                                 myEmployee.ID = Int32.Parse(reader["Employee_ID"].ToString());
                                 myEmployee.FirstName = reader["Employee_FName"].ToString();
                                 myEmployee.LastName = reader["Employee_LName"].ToString();
@@ -66,7 +66,7 @@ namespace Greenshades
             }
         }
 
-
+        //Update database Employee table from property values supplied by EmployeeDetails class
         public static int UpdateEmployeeDetails(EmployeeDetails myEmployee)
         {
             int result = -1;
@@ -103,6 +103,7 @@ namespace Greenshades
             return result;
         }
 
+        //Update database EmployeeContact table from property values supplied by EmployeeDetails class
         public static int UpdateEmployeeContact(EmployeeDetails myEmployee)
         {
             int result = -1;
@@ -135,6 +136,7 @@ namespace Greenshades
             return result;
         }
 
+        //Update database EmployeeAddress table from property values supplied by EmployeeDetails class
         public static int UpdateEmployeeAddress(EmployeeDetails myEmployee)
         {
             int result = -1;
@@ -167,6 +169,7 @@ namespace Greenshades
             }
             return result;
         }
+
 
         public static int DeleteEmployee(int intEmployee_ID)
         {
